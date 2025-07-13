@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Slf4j
@@ -31,6 +32,12 @@ public class ArticleContoller {
         Article saved = articleRepository.save(article);
         log.info(saved.toString()); // println문 대신 로깅코드
        // System.out.println(saved.toString());
+        return "";
+    }
+
+    @GetMapping("/articles/{id}")
+    public String show(@PathVariable Long id){ // 매개변수로 id 받아오기
+        log.info("id = "+id);
         return "";
     }
 
