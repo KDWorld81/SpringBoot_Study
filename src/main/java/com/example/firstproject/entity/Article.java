@@ -5,12 +5,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Getter
 @Entity
 public class Article {
     @Id     // 엔티티의 대푯값 지정
@@ -22,5 +24,7 @@ public class Article {
     private String content;
 
 
-
+    /*public Long getId() {
+        return id;       @Getter 어노테이션 덕에 메서드 필요X
+    }*/
 }

@@ -38,10 +38,10 @@ public class ArticleController {
        // System.out.println(article.toString());
 
         // 2. 리파지터리로 엔티티를 DB에 저장
-        Article saved = articleRepository.save(article);
+        Article saved = articleRepository.save(article); //saved는 Article 엔티티 객체
         log.info(saved.toString()); // println문 대신 로깅코드
        // System.out.println(saved.toString());
-        return "";
+        return "redirect:/articles/" + saved.getId();
     }
 
     // id를 통한 Read
