@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -100,7 +101,7 @@ public class ArticleController {
     }
 
     @GetMapping("articles/{id}/delete")
-    public String delete(@PathVariable Long id){
+    public String delete(@PathVariable Long id , RedirectAttributes rttr){
         log.info("삭제 요청이 들어왔습니다!!");
 
         // 1. 삭제할 대상 가져오기
@@ -110,6 +111,9 @@ public class ArticleController {
         // 2. 대상 엔티티 삭제하기
         if(target != null){
             articleRepository.delete(target); // repository가 DB에서 target을 삭제
+
+            // 아래의 삭제완료 메시지는 return 문을 봤을때, articles인데, articles의 뷰파일? -> index.mustache 파일
+            rttr.addFlashAttribute("msg","삭제됐습니다!");
         }
 
         // 3. 결과 페이지로 리다이렉트
