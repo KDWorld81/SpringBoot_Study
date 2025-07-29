@@ -28,7 +28,6 @@ public class Article {
             this.content = article.content;
     }
 
-
     /*public Long getId() {
         return id;       @Getter 어노테이션 덕에 메서드 필요X
     }*/
